@@ -1,0 +1,53 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+.env
+
+# ── Data & outputs (never commit imaging data or results) ──
+RunBatch_Input/
+RunBatch_Output/
+RunBatch_Completed/
+outputs/
+figures/
+paper/
+*.nii
+*.nii.gz
+*.dcm
+*.DCM
+*.mgz
+*.mha
+*.mhd
+*.raw
+*.nrrd
+*.tfm
+*.mat
+*.pkl
+*.npy
+*.npz
+*.xlsx
+*.csv
+*.json
+!.github/**/*.json
+
+# Images: only curated figures under docs/images/ are tracked
+*.png
+*.jpg
+*.jpeg
+!docs/images/*.png
+
+# ── Logs ────────────────────────────────────────────────
+*.log
+*.stackdump
+
+# ── IDE / OS / tooling ──────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
