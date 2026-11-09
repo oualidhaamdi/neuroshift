@@ -1,0 +1,12 @@
+NeuroShift - Post-operative brain shift quantification
+Copyright 2026 Oualid Hamdi
+
+This product was developed as part of an M.Sc. thesis in Biomedical
+Engineering at the University of Florence (Università degli Studi di Firenze).
+
+This software is research software. It is NOT a medical device and is NOT
+intended for clinical use, diagnosis or treatment planning.
+
+Third-party tools invoked at runtime (not redistributed here):
+  - FSL (FMRIB Software Library), University of Oxford — distributed under a
+    NON-COMMERCIAL licence. See https://fsl.fmrib.ox.ac.uk/fsl/docs/#/license

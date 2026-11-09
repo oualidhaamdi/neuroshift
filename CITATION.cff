@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the thesis below."
+title: "NeuroShift: post-operative brain shift quantification"
+type: software
+authors:
+  - family-names: Hamdi
+    given-names: Oualid
+    affiliation: "University of Florence"
+license: Apache-2.0
+repository-code: "https://github.com/oualidhaamdi/neuroshift"
+keywords:
+  - brain shift
+  - image registration
+  - B-spline
+  - MRI
+  - neurosurgery
+  - medical imaging
+preferred-citation:
+  type: thesis
+  thesis-type: "M.Sc. thesis"
+  title: "Development and Validation of a Pipeline for the Quantification of Post-Operative Brain Shift"
+  authors:
+    - family-names: Hamdi
+      given-names: Oualid
+  institution:
+    name: "University of Florence"
+  year: 2026
