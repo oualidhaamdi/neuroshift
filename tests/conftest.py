@@ -3,14 +3,12 @@ Shared fixtures: a small, fully synthetic brain-like phantom.
 
 No patient data is used anywhere in the test-suite. The phantom is an
 ellipsoidal "brain" with three nested intensity classes (CSF-, GM- and
-WM-like) plus smooth texture, so that intensity-based registration has
-gradients to work with. Volumes are small (48^3 voxels at 2.5 mm) so the
-whole suite runs in seconds on a CI runner.
+WM-like) plus smooth texture. Volumes are small (48^3 voxels at 2.5 mm) so the
+whole suite runs in seconds.
 """
 
 import sys
 from pathlib import Path
-from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -53,21 +51,3 @@ def _make_phantom(seed: int = 0) -> tuple[sitk.Image, sitk.Image]:
 def phantom():
     """(image, brain_mask) tuple of a synthetic brain-like phantom."""
     return _make_phantom()
-
-
-@pytest.fixture(scope="session")
-def reg_config():
-    """Minimal config object with a fast, seeded registration profile."""
-    return SimpleNamespace(
-        SELECTED_REGISTRATION_MODE="test",
-        REGISTRATION_MODES={
-            "test": {
-                "learning_rate": 0.5,
-                "max_iterations": 40,
-                "sampling_percentage": 0.5,   # x2 for small ROI -> 100 %
-                "grid_spacing": [15.0],
-                "distance_map_ds_factor": 1,
-                "random_seed": 42,
-            }
-        },
-    )

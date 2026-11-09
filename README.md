@@ -185,10 +185,12 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
-The tests run on a small **synthetic digital phantom** (no patient data) and cover
-the metrics, the synthetic ground-truth generator, the SimpleITK fallbacks, recovery
-of a known Gaussian displacement by the B-Spline registrar, and the effect of CFM
-near a simulated cavity. They run on GitHub Actions for Python 3.10, 3.11 and 3.12.
+Fast unit tests on a small **synthetic digital phantom** (no patient data) cover the
+similarity and Jacobian metrics, the synthetic ground-truth generator and the
+validation metrics (including the sign convention), the SimpleITK fallback backends
+and FSL detection. They run on GitHub Actions for Python 3.10, 3.11 and 3.12 and
+inside the Docker image. End-to-end registration accuracy is assessed by the
+synthetic validation framework below, not by the unit tests.
 
 ### Reproducing the validation
 

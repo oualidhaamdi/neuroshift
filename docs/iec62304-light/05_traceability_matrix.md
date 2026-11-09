@@ -28,11 +28,11 @@
 |---|---|---|---|
 | REQ-PRE-01 | `src/backends/bet_fsl.py`, `bet_sitk.py` | `tests/test_backends.py::test_otsu_brain_extraction_matches_phantom` | Automated |
 | REQ-PRE-02 | `src/backends/segmenter_fast.py`, `segmenter_sitk.py` | `tests/test_backends.py::test_kmeans_segmentation_produces_three_classes_inside_mask` | Automated |
-| REQ-PRE-03 | `src/backends/rigid_flirt.py`, `rigid_sitk.py` | `tests/test_backends.py::test_euler3d_recovers_small_translation` | Automated |
+| REQ-PRE-03 | `src/backends/rigid_flirt.py`, `rigid_sitk.py` | `--validate-rigid` (NCC, QC figures), `--validate-robustness` (Monte Carlo TRE) | System |
 | REQ-PRE-04 | `src/register_tissue.py`, `src/qc/create_synthetic_patients.py` (`DICOMOrient`) | Code review; `--validate-preprocessing` QC figures | Manual |
-| REQ-REG-01 | `src/backends/deformable_bspline_intensity.py` | `tests/test_registration.py::test_bspline_recovers_known_gaussian_shift`; 112-case sweep and multi-brain cross-validation (`src/qc/`) | Automated + system |
-| REQ-REG-02 | `src/brain_shift_analysis.py`, `src/metrics/deformation.py` | `tests/test_registration.py::test_bspline_field_is_diffeomorphic_on_phantom` | Automated |
-| REQ-CFM-01 | `src/register_tissue.py` (CFM block), `DISABLE_CFM` switch | `tests/test_registration.py::test_cost_function_masking_near_cavity`; `src/qc/cavity_demo.py`; CFM ablation sweep | Automated + system |
+| REQ-REG-01 | `src/backends/deformable_bspline_intensity.py` | 112-case synthetic sweep and multi-brain cross-validation, N = 50 (`src/qc/`) | System |
+| REQ-REG-02 | `src/brain_shift_analysis.py`, `src/metrics/deformation.py` | `tests/test_metrics.py::test_jacobian_*` (computation); folding reported by every sweep case (system) | Automated + system |
+| REQ-CFM-01 | `src/register_tissue.py` (CFM block), `DISABLE_CFM` switch | `src/qc/cavity_demo.py`; CFM-ablation sweep (`--no-cfm`) on the 56 cavity cases | System |
 | REQ-MET-01 | `src/metrics/similarity.py` | `tests/test_metrics.py::test_ncc_*`, `test_mi_self_higher_than_noise` | Automated |
 | REQ-MET-02 | `src/metrics/deformation.py` | `tests/test_metrics.py::test_jacobian_identity_is_one`, `test_jacobian_uniform_scaling` | Automated |
 | REQ-VAL-01 | `src/qc/create_synthetic_patients.py::apply_gauss3d_shift` | `tests/test_synthetic_ground_truth.py::test_gaussian_field_peak_direction_and_support`, `test_gaussian_shift_changes_image` | Automated |
@@ -44,7 +44,10 @@
 
 ## 5.3 Coverage summary
 
-- 15 requirements; 12 verified by automated tests (11 by pytest, 1 by the CI Docker
-  job), 3 by manual review.
+- 15 requirements: 9 covered by automated tests (8 by pytest, 1 by the CI Docker
+  job), 4 by system-level synthetic validation in `src/qc/` (REQ-REG-02 by both),
+  3 by manual review.
+- Planned: a fast end-to-end registration test on a phantom with realistic
+  texture, to move REQ-REG-01 and REQ-CFM-01 into the automated suite.
 - Every software risk control in [04](04_risk_analysis.md) traces to at least one
   requirement.

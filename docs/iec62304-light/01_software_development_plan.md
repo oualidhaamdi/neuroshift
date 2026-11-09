@@ -22,7 +22,7 @@ implementation → verification; the activities below are repeated for every cha
 | §5.3 Architectural design | Layered design: CLI → orchestration (`register_tissue.py`, `brain_shift_analysis.py`) → backends behind abstract interfaces (`src/backends/base.py`); documented in `docs/technical_notes.md` |
 | §5.4 Detailed design | Docstrings and module-level design notes |
 | §5.5 Unit implementation and verification | Code review on pull requests; pytest unit tests |
-| §5.6 Integration and integration testing | End-to-end tests on a synthetic phantom (`tests/test_registration.py`) |
+| §5.6 Integration and integration testing | Pilot synthetic sweep (12 cases, `run_synthetic_sweep --pilot`) run before each release |
 | §5.7 System testing | Synthetic validation: 112-case sweep, multi-brain cross-validation (N = 50), cavity-mismatch stress test (`src/qc/`) |
 | §5.8 Release | Tagged release, pinned dependencies, Docker image, release notes |
 
