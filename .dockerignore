@@ -1,0 +1,10 @@
+.git
+.github
+**/__pycache__
+.pytest_cache
+RunBatch_*
+outputs
+figures
+docs/images
+*.nii
+*.nii.gz
